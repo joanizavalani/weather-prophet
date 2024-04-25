@@ -1,16 +1,13 @@
 package org.joza.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
-@Data
 
 public class WeatherData {
 
