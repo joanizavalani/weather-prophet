@@ -2,7 +2,10 @@ package org.joza;
 
 import org.joza.entity.Location;
 import org.joza.service.LocationService;
+import org.joza.service.WeatherDataService;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -12,12 +15,16 @@ public class ConsoleUI {
 
     private final Scanner scanner;
 
-    // class takes parameter below to link all of its methods to the service
+    // class takes parameters below to link all of its methods to the service
+
     private final LocationService locationService;
 
-    public ConsoleUI(LocationService locationService){
+    private final WeatherDataService weatherDataService;
+
+    public ConsoleUI(LocationService locationService, WeatherDataService weatherDataService){
         this.locationService = locationService;
         this.scanner = new Scanner(System.in);
+        this.weatherDataService = weatherDataService;
     }
 
     public void runMenu(){
@@ -44,11 +51,11 @@ public class ConsoleUI {
                     break;
 
                 case 3:
-                    // weatherData repository, service & DAO to be added
+                    downloadWeatherData();
                     break;
 
                 case 4:
-                    // weatherData repository, service & DAO to be added
+                    viewWeatherData();
                     break;
 
                 case 5:
@@ -182,13 +189,43 @@ public class ConsoleUI {
         }
 
         System.out.println();
+        System.out.println("These are all the locations saved in your database.");
+        System.out.println();
+
     }
 
-    // option 3
-    private void downloadWeatherData(){}
+    // option 3: UNFINISHED, JSON and API to be added.
+    private void downloadWeatherData(){
 
-    // option 4
-    private void viewWeatherData(){}
+        System.out.println();
+        System.out.println("~~~ DOWNLOAD WEATHER DATA FROM A LOCATION ~~~");
+        System.out.println();
+
+        System.out.println("Please insert the ID of the location you want to download weather data from:");
+        UUID locationId = UUID.fromString(scanner.nextLine());
+
+        System.out.println("Please insert the desired date (yyyy-mm-dd) for your weather forecast:");
+        LocalDate date = LocalDate.parse(scanner.nextLine());
+
+        weatherDataService.downloadWeatherData(locationId, date);
+
+        System.out.println();
+        System.out.println("Location data was successfully downloaded.");
+        System.out.println();
+    }
+
+    // option 4: UNFINISHED, see comment above option 3.
+    private void viewWeatherData(){
+
+        System.out.println();
+        System.out.println("~~~ VIEW WEATHER FORECAST FOR YOUR LOCATION ~~~");
+        System.out.println();
+
+        System.out.println("Please insert the ID of the location you want to view forecast of:");
+        UUID locationId = UUID.fromString(scanner.nextLine());
+
+        weatherDataService.getWeatherDataByLocation(locationId);
+    }
 
     // option 5
     private void searchLocation(){
@@ -200,13 +237,15 @@ public class ConsoleUI {
         System.out.println("Please insert the city name of the location you want to find:");
         String cityName = scanner.nextLine();
 
-            if(cityName == null){
-                System.out.println("No locations were found with the city name you entered.");
-                System.out.println();
-                return;
+        List<Location> locationsSearched = locationService.viewLocationsByCity(cityName);
+
+            if(locationsSearched.isEmpty()){
+                    System.out.println("No locations were found with the city name you entered.");
+                    System.out.println();
+                    return;
             }
 
-        for(Location location : locationService.getLocationByCity(cityName)){
+        for(Location location : locationsSearched){
 
             if(location.getRegionName().isEmpty()){  // --> check if there's no region name in a certain location,
                 location.setRegionName("- ");        //     and if there isn't it gets replaced with a hyphen (-)
@@ -217,6 +256,8 @@ public class ConsoleUI {
 
         }
 
+        System.out.println();
+        System.out.println("There are the locations corresponding with the city name you've entered.");
         System.out.println();
     }
 

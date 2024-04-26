@@ -27,6 +27,12 @@ public class LocationService implements LocationRepository {
     }
 
     @Override
+    public List<Location> viewLocationsByCity(String cityName) {
+
+        return locationRepository.viewLocationsByCity(cityName);
+    }
+
+    @Override
     public void updateLocation(Location location) {
 
         locationRepository.updateLocation(location);
@@ -42,12 +48,6 @@ public class LocationService implements LocationRepository {
     public Location getLocation(UUID locationId) {
 
         return locationRepository.getLocation(locationId);
-    }
-
-    @Override
-    public List<Location> getLocationByCity(String cityName) {
-
-        return locationRepository.getLocationByCity(cityName);
     }
 
 }

@@ -14,13 +14,14 @@ public interface LocationRepository {
 
     List<Location> viewAllLocations();
 
+    List<Location> viewLocationsByCity(String cityName);
+
     void updateLocation(Location location);
 
     void deleteLocation(UUID locationId);
 
     Location getLocation(UUID locationId);
 
-    List<Location> getLocationByCity(String cityName);
 
 
 }

@@ -2,6 +2,7 @@ package org.joza.entity;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,6 +17,8 @@ public class WeatherData {
     private UUID id;
 
     private UUID locationId; // --> this acts as a foreign key from the Location class
+
+    private LocalDate date;
 
     private double temperature;
 

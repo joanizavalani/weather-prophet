@@ -8,7 +8,7 @@ public class DatabaseConstants {
 
     public static final String DB_NAME = "weather_prophet";
 
-    public static final String DB_USERNAME = "";
+    public static final String DB_USERNAME = "root";
 
     public static final String DB_PASSWORD = "";
 

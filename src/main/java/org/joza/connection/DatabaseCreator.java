@@ -58,6 +58,7 @@ public class DatabaseCreator {
             String query = "CREATE TABLE IF NOT EXISTS weather_data(" +
                     "id VARCHAR(36) PRIMARY KEY," +
                     "locations_id VARCHAR(36)," +
+                    "date DATE," +
                     "temperature DOUBLE," +
                     "apparent_temperature DOUBLE," +
                     "weather_description VARCHAR(255)," +

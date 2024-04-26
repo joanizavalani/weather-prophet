@@ -2,8 +2,11 @@ package org.joza;
 
 import org.joza.connection.DatabaseCreator;
 import org.joza.connection.LocationDAO;
+import org.joza.connection.WeatherDataDAO;
 import org.joza.repository.LocationRepository;
+import org.joza.repository.WeatherDataRepository;
 import org.joza.service.LocationService;
+import org.joza.service.WeatherDataService;
 
 public class Main {
 
@@ -23,7 +26,10 @@ public class Main {
             LocationRepository locationRepository = new LocationDAO();
             LocationService locationService = new LocationService(locationRepository);
 
-            ConsoleUI consoleUI = new ConsoleUI(locationService);
+            WeatherDataRepository weatherDataRepository = new WeatherDataDAO();
+            WeatherDataService weatherDataService = new WeatherDataService(weatherDataRepository, locationRepository);
+
+            ConsoleUI consoleUI = new ConsoleUI(locationService, weatherDataService);
 
             consoleUI.runMenu();
 
