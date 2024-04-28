@@ -1,6 +1,7 @@
 package org.joza;
 
 import org.joza.entity.Location;
+import org.joza.entity.WeatherData;
 import org.joza.service.LocationService;
 import org.joza.service.WeatherDataService;
 
@@ -12,14 +13,15 @@ import java.util.UUID;
 public class ConsoleUI {
 
     // this class has all the methods that will appear on the console user interface
-
-    private final Scanner scanner;
-
     // class takes parameters below to link all of its methods to the service
 
     private final LocationService locationService;
 
     private final WeatherDataService weatherDataService;
+
+    private final Scanner scanner;
+
+    // constructor
 
     public ConsoleUI(LocationService locationService, WeatherDataService weatherDataService){
         this.locationService = locationService;
@@ -27,11 +29,13 @@ public class ConsoleUI {
         this.weatherDataService = weatherDataService;
     }
 
+    // method that runs the console interface, connects to every method in this class
+
     public void runMenu(){
 
         boolean appIsRunning = true;
 
-        openMenu();
+        titleMenu();
 
         while(appIsRunning){
 
@@ -84,7 +88,11 @@ public class ConsoleUI {
         }
     }
 
-    private void openMenu(){
+    // first method called, presents the program
+
+    private void titleMenu(){
+
+        System.out.println();
         System.out.println("""
                 ╭── ⋅ ⋅ ── ~ ── ⋅ ⋅ ──╮
                                 
@@ -93,7 +101,7 @@ public class ConsoleUI {
                 ╰── ⋅ ⋅ ── ~ ── ⋅ ⋅ ──╯
                 """);
 
-        System.out.println("Aye, you've entered the Weather Prophet's shrine of meteorology.");
+        System.out.println("Hi, you've entered the Weather Prophet's shrine of meteorology.");
         System.out.println("I can accurately guess the weather of any real-life location!");
 
         System.out.println();
@@ -162,7 +170,7 @@ public class ConsoleUI {
         location.setRegionName(regionName);
         location.setCountryName(countryName);
 
-        locationService.addLocation(location); // connected values with service
+        locationService.addLocation(location); // --> connected values with service
 
         System.out.println();
         System.out.println("Location was added to the database.");
@@ -194,7 +202,7 @@ public class ConsoleUI {
 
     }
 
-    // option 3: UNFINISHED, JSON and API to be added.
+    // option 3
     private void downloadWeatherData(){
 
         System.out.println();
@@ -210,11 +218,11 @@ public class ConsoleUI {
         weatherDataService.downloadWeatherData(locationId, date);
 
         System.out.println();
-        System.out.println("Location data was successfully downloaded.");
+        System.out.println("Weather data was successfully downloaded.");
         System.out.println();
     }
 
-    // option 4: UNFINISHED, see comment above option 3.
+    // option 4
     private void viewWeatherData(){
 
         System.out.println();
@@ -224,7 +232,22 @@ public class ConsoleUI {
         System.out.println("Please insert the ID of the location you want to view forecast of:");
         UUID locationId = UUID.fromString(scanner.nextLine());
 
-        weatherDataService.getWeatherDataByLocation(locationId);
+        System.out.println();
+        System.out.println("Here's your weather data:");
+        System.out.println();
+
+        for (WeatherData weatherData : weatherDataService.getWeatherDataByLocation(locationId)) {
+            System.out.println("Date: "+ weatherData.getDate());
+            System.out.println("Temperature: "+ weatherData.getTemperature());
+            System.out.println("Feels Like: "+ weatherData.getApparentTemperature());
+            System.out.println("Weather Description: "+ weatherData.getWeatherDescription());
+            System.out.println("Pressure: "+ weatherData.getPressure());
+            System.out.println("Humidity: "+ weatherData.getHumidity());
+            System.out.println("Wind Direction: "+ weatherData.getWindDirection());
+            System.out.println("Wind Speed: "+ weatherData.getWindSpeed());
+
+            System.out.println();
+        }
     }
 
     // option 5

@@ -4,7 +4,7 @@ import org.joza.entity.WeatherData;
 import org.joza.repository.WeatherDataRepository;
 
 import java.sql.*;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,7 +18,7 @@ public class WeatherDataDAO implements WeatherDataRepository {
                 DatabaseConstants.DB_USERNAME, DatabaseConstants.DB_PASSWORD)){
 
             String query = "INSERT INTO weather_data" +
-                    "(id, location_id, date, temperature, apparent_temperature, weather_description," +
+                    "(id, locations_id, date, temperature, apparent_temperature, weather_description," +
                     "pressure, humidity, wind_speed, wind_direction)" +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -48,23 +48,26 @@ public class WeatherDataDAO implements WeatherDataRepository {
 
     @Override
     public List<WeatherData> getWeatherDataByLocation(UUID locationId) {
-        List<WeatherData> WeatherDataList = null;
+        List<WeatherData> weatherDataList = new ArrayList<>();
 
         try(Connection connection = DriverManager.getConnection(
                 DatabaseConstants.DB_URL + DatabaseConstants.DB_NAME,
                 DatabaseConstants.DB_USERNAME, DatabaseConstants.DB_PASSWORD)){
 
-            String query = "SELECT * FROM weather_data WHERE location_id = ?";
+            String query = "SELECT * FROM weather_data WHERE locations_id = ?";
 
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.setString(1, locationId.toString());
+
+            ResultSet resultSet = statement.executeQuery();
 
                 while(resultSet.next()){
 
                     WeatherData weatherData = new WeatherData();
 
                     weatherData.setId(UUID.fromString(resultSet.getString("id")));
-                    weatherData.setLocationId(UUID.fromString(resultSet.getString("location_id")));
+                    weatherData.setLocationId(UUID.fromString(resultSet.getString("locations_id")));
                     weatherData.setDate(resultSet.getDate("date").toLocalDate());
                     weatherData.setTemperature(resultSet.getDouble("temperature"));
                     weatherData.setApparentTemperature(resultSet.getDouble("apparent_temperature"));
@@ -74,14 +77,14 @@ public class WeatherDataDAO implements WeatherDataRepository {
                     weatherData.setWindSpeed(resultSet.getDouble("wind_speed"));
                     weatherData.setWindDirection(resultSet.getString("wind_direction"));
 
-                    WeatherDataList.add(weatherData);
+                    weatherDataList.add(weatherData);
                 }
 
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
 
-        return WeatherDataList;
+        return weatherDataList;
     }
 
 }

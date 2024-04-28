@@ -6,15 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e910030c-7c13-42e5-a2cd-02c03b1ca827" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/connection/DatabaseConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/connection/DatabaseConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/connection/DatabaseCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/connection/DatabaseCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/connection/LocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/connection/LocationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/entity/WeatherData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/entity/WeatherData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/repository/LocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/repository/LocationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/service/LocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/connection/WeatherDataDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/connection/WeatherDataDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/service/WeatherDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/service/WeatherDataService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,11 +115,25 @@
       <workItem from="1713974045223" duration="161000" />
       <workItem from="1713993801102" duration="19157000" />
       <workItem from="1714144194313" duration="2512000" />
-      <workItem from="1714157953723" duration="8360000" />
+      <workItem from="1714157953723" duration="8626000" />
+      <workItem from="1714216178250" duration="7182000" />
+      <workItem from="1714298157527" duration="3265000" />
+      <workItem from="1714310038476" duration="14000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

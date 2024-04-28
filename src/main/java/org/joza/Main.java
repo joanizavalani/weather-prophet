@@ -10,7 +10,7 @@ import org.joza.service.WeatherDataService;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         // weatherData repository, service & DAO to be added next
 
@@ -18,8 +18,8 @@ public class Main {
 
             new DatabaseCreator(); // DB & tables created on MySQL
 
-            // Console UI connects to the service, since it takes it as a parameter.
-            // The service implements the repository and takes it as a parameter, and since the repository is
+            // Console UI connects to the services, since it takes them as parameters.
+            // Each service implements its respective repository and takes it as a parameter, and since the repository is
             // connected to the DAO through polymorphism, whatever value is set in the console UI, the DAO gets
             // and connects it to the database.
 
@@ -30,10 +30,9 @@ public class Main {
             WeatherDataService weatherDataService = new WeatherDataService(weatherDataRepository, locationRepository);
 
             ConsoleUI consoleUI = new ConsoleUI(locationService, weatherDataService);
-
             consoleUI.runMenu();
 
-        } catch (Exception e) {
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
