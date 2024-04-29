@@ -60,7 +60,6 @@ public class WeatherDataService implements WeatherDataRepository {
         } catch (Exception e){
             throw new RuntimeException(e);
         }
-        // JSON connection and API need to be established first
     }
 
     // we reuse the getLocation method below from the location rep. which connects to the DAO and use it to verify if
@@ -74,7 +73,7 @@ public class WeatherDataService implements WeatherDataRepository {
     private JSONObject getWeatherDataJSON(String cityName) throws IOException {
 
         String apiEndpoint = "http://api.openweathermap.org/data/2.5/weather";
-        String apiKey = "8e3d492ebec0c41e1724e40229c4281d";
+        String apiKey = "" ; // private for safety reasons
 
         URL url = new URL(STR."\{apiEndpoint}?q=\{cityName}&appid=\{apiKey}");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e910030c-7c13-42e5-a2cd-02c03b1ca827" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/connection/DatabaseConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/connection/DatabaseConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/connection/WeatherDataDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/connection/WeatherDataDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/joza/service/WeatherDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/joza/service/WeatherDataService.java" afterDir="false" />
-    </list>
+    <list default="true" id="e910030c-7c13-42e5-a2cd-02c03b1ca827" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,6 +112,7 @@
       <workItem from="1714216178250" duration="7182000" />
       <workItem from="1714298157527" duration="3265000" />
       <workItem from="1714310038476" duration="14000" />
+      <workItem from="1714347468052" duration="565000" />
     </task>
     <servers />
   </component>
